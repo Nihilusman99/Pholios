@@ -174,6 +174,51 @@ const FontLoader = () => (
       inset: 0;
       pointer-events: none;
     }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .nav-container { padding: 16px 24px !important; flex-direction: column; gap: 16px; align-items: flex-start !important; }
+      .nav-links { gap: 16px !important; flex-wrap: wrap; }
+      
+      .page-section { padding: 60px 24px 40px !important; flex-direction: column; align-items: flex-start !important; gap: 40px; }
+      .page-section-pt { padding-top: 60px !important; }
+      .px-80 { padding: 0 24px !important; }
+      .px-80-pb-120 { padding: 0 24px 80px !important; }
+      .px-80-margin { margin: 0 24px 80px !important; }
+      .section-divider { margin: 0 24px !important; }
+      
+      .hero-flex { flex-direction: column; gap: 24px !important; padding: 0 24px !important; align-items: flex-start !important; bottom: 40px !important; }
+      .grid-3col { grid-template-columns: 1fr !important; }
+      .grid-auto { grid-template-columns: 1fr !important; }
+      .grid-sidebar { grid-template-columns: 1fr !important; gap: 40px !important; }
+      
+      .page-header { padding: 40px 24px 24px !important; }
+      .page-content { padding: 0 24px 80px !important; }
+      
+      .footer-container { flex-direction: column; align-items: flex-start !important; gap: 24px !important; padding: 40px 24px !important; }
+      
+      .masonry { columns: 1 !important; }
+      
+      .proj-card { padding: 32px 24px !important; height: auto !important; min-height: 400px !important; }
+      .h-scroll-card { min-width: 85vw !important; }
+      .grid-card { grid-column: span 1 !important; min-width: 0 !important; width: 100% !important; }
+      
+      .cursor-dot, .cursor-ring { display: none !important; }
+      body { cursor: auto !important; }
+      a, button, [data-hover] { cursor: pointer !important; }
+      
+      .reading-col { padding: 40px 24px 80px !important; }
+      .museum-item { height: auto !important; min-height: 280px !important; padding: 24px !important; }
+      .evolution-item { padding: 32px 24px !important; }
+
+      .projects-layout { flex-direction: column !important; }
+      .projects-sidebar { width: 100% !important; padding: 40px 24px 24px !important; border-right: none !important; border-bottom: 1px solid #C8D2D9 !important; }
+      .projects-sidebar > div { flex-direction: row !important; flex-wrap: wrap; }
+      .projects-sidebar-count { margin-top: 24px !important; padding-top: 16px !important; }
+      .projects-grid-container { padding: 40px 24px 80px !important; }
+      
+      .filter-row { padding: 0 24px !important; gap: 16px !important; flex-wrap: wrap; }
+    }
   `}</style>
 );
 
@@ -481,7 +526,7 @@ const HeroConstellation = ({ onComplete }: { onComplete: () => void }) => {
 const Nav = ({ page, setPage }: { page: string, setPage: (p: string) => void }) => {
   const links = ["me", "projects", "background", "gallery"];
   return (
-    <nav style={{
+    <nav className="nav-container" style={{
       position: "fixed",
       top: 0,
       left: 0,
@@ -512,7 +557,7 @@ const Nav = ({ page, setPage }: { page: string, setPage: (p: string) => void }) 
       >
         D I e g o
       </button>
-      <div style={{ display: "flex", gap: 36 }}>
+      <div className="nav-links" style={{ display: "flex", gap: 36 }}>
         {links.map(l => (
           <button
             key={l}
@@ -533,8 +578,8 @@ const Nav = ({ page, setPage }: { page: string, setPage: (p: string) => void }) 
 const PageMe = () => (
   <div className="page-enter" style={{ paddingTop: 120 }}>
     {/* Manifesto */}
-    <section style={{ padding: "120px 80px 80px", maxWidth: 1200, margin: "0 auto" }}>
-      <div style={{
+    <section className="page-section" style={{ padding: "120px 80px 80px", maxWidth: 1200, margin: "0 auto" }}>
+      <div className="hero-flex" style={{
         display: "flex",
         alignItems: "flex-start",
         gap: 48,
@@ -563,14 +608,14 @@ const PageMe = () => (
       </div>
     </section>
 
-    <div style={{ borderTop: `1px solid ${T.border}`, margin: "0 80px" }} />
+    <div className="section-divider" style={{ borderTop: `1px solid ${T.border}`, margin: "0 80px" }} />
 
     {/* Evolution */}
-    <section style={{ padding: "80px 80px", maxWidth: 1200, margin: "0 auto" }}>
+    <section className="page-section" style={{ padding: "80px 80px", maxWidth: 1200, margin: "0 auto" }}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 56 }}>
         <span style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: T.accent }}>§02 — The Evolution</span>
       </div>
-      <div style={{
+      <div className="grid-3col" style={{
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gap: 1,
@@ -598,7 +643,7 @@ const PageMe = () => (
         ].map(col => (
           <div
             key={col.num}
-            className="fade-up"
+            className="fade-up evolution-item"
             style={{
               background: T.bg,
               padding: "48px 40px",
@@ -632,14 +677,14 @@ const PageMe = () => (
       </div>
     </section>
 
-    <div style={{ borderTop: `1px solid ${T.border}`, margin: "0 80px" }} />
+    <div className="section-divider" style={{ borderTop: `1px solid ${T.border}`, margin: "0 80px" }} />
 
     {/* Selected Work */}
-    <section style={{ padding: "80px 0 120px" }}>
-      <div style={{ padding: "0 80px", marginBottom: 40, display: "flex", alignItems: "center", gap: 8 }}>
+    <section className="page-section-pt" style={{ padding: "80px 0 120px" }}>
+      <div className="px-80" style={{ padding: "0 80px", marginBottom: 40, display: "flex", alignItems: "center", gap: 8 }}>
         <span style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: T.accent }}>§03 — Selected Work</span>
       </div>
-      <div className="h-scroll-track proj-card-group" style={{ padding: "0 80px" }}>
+      <div className="h-scroll-track proj-card-group px-80-pb-120" style={{ padding: "0 80px" }}>
         {[
           {
             id: "W1",
@@ -676,7 +721,7 @@ const PageMe = () => (
         ].map(card => (
           <div
             key={card.id}
-            className="proj-card"
+            className="proj-card h-scroll-card"
             data-hover="true"
             style={{
               minWidth: "clamp(300px, 30vw, 420px)",
@@ -1020,9 +1065,9 @@ const PageProjects = () => {
 
   return (
     <div className="page-enter" style={{ paddingTop: 120 }}>
-      <div style={{ display: "flex", gap: 0, minHeight: "100vh" }}>
+      <div className="projects-layout" style={{ display: "flex", gap: 0, minHeight: "100vh" }}>
         {/* Sidebar */}
-        <div style={{
+        <div className="projects-sidebar" style={{
           width: 220,
           padding: "64px 40px",
           borderRight: `1px solid ${T.border}`,
@@ -1043,7 +1088,7 @@ const PageProjects = () => {
               </button>
             ))}
           </div>
-          <div style={{ marginTop: 48, borderTop: `1px solid ${T.border}`, paddingTop: 32 }}>
+          <div className="projects-sidebar-count" style={{ marginTop: 48, borderTop: `1px solid ${T.border}`, paddingTop: 32 }}>
             <div style={{ fontSize: 10, color: T.border, letterSpacing: "0.06em", lineHeight: 1.6 }}>
               {visible.length} {visible.length === 1 ? "project" : "projects"}
             </div>
@@ -1051,8 +1096,8 @@ const PageProjects = () => {
         </div>
 
         {/* Grid */}
-        <div style={{ flex: 1, padding: "64px 48px" }}>
-          <div style={{
+        <div className="projects-grid-container" style={{ flex: 1, padding: "64px 48px" }}>
+          <div className="grid-auto" style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
             gap: 16,
@@ -1060,7 +1105,7 @@ const PageProjects = () => {
             {visible.map(p => (
               <div
                 key={p.id}
-                className="proj-card"
+                className="proj-card grid-card"
                 data-hover="true"
                 onClick={() => setOpenProject(p.id)}
                 style={{
@@ -1137,7 +1182,7 @@ const PageBackground = () => {
   return (
     <div className="page-enter" style={{ paddingTop: 120 }}>
       {/* Header */}
-      <div style={{ padding: "64px 80px 48px" }}>
+      <div className="page-header" style={{ padding: "64px 80px 48px" }}>
         <h2 className="fraunces" style={{
           fontSize: "clamp(32px, 3vw, 44px)",
           fontWeight: 300,
@@ -1152,10 +1197,10 @@ const PageBackground = () => {
         </p>
       </div>
 
-      <div style={{ borderTop: `1px solid ${T.border}`, margin: "0 80px 48px" }} />
+      <div className="section-divider" style={{ borderTop: `1px solid ${T.border}`, margin: "0 80px 48px" }} />
 
       {/* Label row */}
-      <div style={{
+      <div className="filter-row" style={{
         display: "flex",
         padding: "0 80px",
         gap: 40,
@@ -1185,7 +1230,7 @@ const PageBackground = () => {
       </div>
 
       {/* Museum grid */}
-      <div style={{
+      <div className="grid-3col px-80-margin" style={{
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gap: 2,
@@ -1194,6 +1239,7 @@ const PageBackground = () => {
         {visibleObjects.map((obj, i) => (
           <div
             key={i}
+            className="museum-item"
             data-hover="true"
             onMouseEnter={() => setHoveredIdx(i)}
             onMouseLeave={() => setHoveredIdx(null)}
@@ -1265,7 +1311,7 @@ const PageGallery = () => {
 
   return (
     <div className="page-enter" style={{ paddingTop: 120 }}>
-      <div style={{ padding: "64px 80px 48px" }}>
+      <div className="page-header" style={{ padding: "64px 80px 48px" }}>
         <h2 className="fraunces" style={{
           fontSize: "clamp(32px, 3vw, 44px)",
           fontWeight: 300,
@@ -1280,7 +1326,7 @@ const PageGallery = () => {
         </p>
       </div>
 
-      <div style={{ padding: "0 80px 120px" }} className="gallery-group">
+      <div className="gallery-group page-content" style={{ padding: "0 80px 120px" }}>
         <div className="masonry">
           {galleryItems.map((item, i) => {
             if (item.type === "fragment") {
@@ -1391,7 +1437,7 @@ export default function App() {
 
         {/* Footer */}
         {page !== "hero" && (
-          <footer style={{
+          <footer className="footer-container" style={{
             borderTop: `1px solid ${T.border}`,
             padding: "48px 80px",
             display: "flex",
