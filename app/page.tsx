@@ -625,20 +625,20 @@ const PageMe = () => (
           {
             num: "01",
             title: "Industrial Design",
-            body: "Understanding physical constraints and human-object relationships. The craft of giving form to function, ergonomics as empathy.",
-            tag: "Foundation",
+            body: "Finding the form. Understanding how physical constraints and human relationships define the objects we touch.",
+            tag: "Origin",
           },
           {
             num: "02",
             title: "Generative AI",
-            body: "Specialization in Generative AI (Vanderbilt) and developing systems for creative expansion — from prototype to deployed model.",
-            tag: "Specialization",
+            body: "Expanding the form. Using Generative AI to move from physical boundaries to cognitive systems and creative possibilities.",
+            tag: "Evolution",
           },
           {
             num: "03",
             title: "Advocacy",
-            body: "Translating complex AI tools into actionable frameworks, like the 30-hour curriculum developed for INBAL educators.",
-            tag: "Impact",
+            body: "Sharing the form. Translating complex intelligence into actionable frameworks that empower others to design the future.",
+            tag: "Purpose",
           },
         ].map(col => (
           <div
@@ -687,15 +687,15 @@ const PageMe = () => (
       <div className="h-scroll-track proj-card-group px-80-pb-120" style={{ padding: "0 80px" }}>
         {[
           {
-            id: "W1",
+            id: "ideai",
             title: "IdeAI",
             sub: "Master's Thesis",
             desc: "Measuring GenAI's impact on the creative ideation process through a structured design methodology.",
             color: "#FFFFFF",
-            tag: "Research · 2024",
+            tag: "Research",
           },
           {
-            id: "W2",
+            id: "mia",
             title: "MIA Model",
             sub: "AI Model",
             desc: "Model for Inspirational Advancement — a fine-tuned generative system for creative professionals.",
@@ -703,26 +703,27 @@ const PageMe = () => (
             tag: "AI · Systems",
           },
           {
-            id: "W3",
-            title: "Echoes",
-            sub: "App",
-            desc: "Geolocated storytelling platform. Leave a voice or text fragment tied to a place.",
+            id: "munchen",
+            title: "München Mate",
+            sub: "APP",
+            desc: "A context-aware companion designed to navigate the physical and cultural layers of a city through intelligent, localized interaction.",
             color: "#FFFFFF",
-            tag: "Product · Mobile",
+            tag: "PRODUCT · TRAVEL",
           },
           {
-            id: "W4",
-            title: "Wardrobe OS",
-            sub: "App",
-            desc: "A meticulous JSON-structured clothing inventory with intelligent outfit suggestion.",
+            id: "cauma",
+            title: "Cauma",
+            sub: "Research and Development",
+            desc: "A sensory compression garment exploring the boundary between physical objects and emotional regulation through deep-pressure interaction.",
             color: "#FFFFFF",
-            tag: "UX · Data",
+            tag: "INDUSTRIAL DESIGN · TANGIBLE",
           },
         ].map(card => (
           <div
             key={card.id}
             className="proj-card h-scroll-card"
             data-hover="true"
+            onClick={() => window.location.hash = `projects/${card.id}`}
             style={{
               minWidth: "clamp(300px, 30vw, 420px)",
               height: 480,
@@ -774,15 +775,14 @@ const PageMe = () => (
 );
 
 // ── Page: Projects ─────────────────────────────────────────────
-const PageProjects = () => {
+const PageProjects = ({ openProject }: { openProject: string | null }) => {
   const [filter, setFilter] = useState("All");
-  const [openProject, setOpenProject] = useState<string | null>(null);
-  const filters = ["All", "Thesis", "AI Models", "Apps"];
+  const filters = ["All", "Research", "AI Models", "App", "Design"];
 
   const projects = [
     {
       id: "ideai",
-      category: "Thesis",
+      category: "Research",
       title: "IdeAI",
       subtitle: "Master's Thesis — Vanderbilt University, 2024",
       abstract: "This thesis investigates the intersection of generative artificial intelligence and the human creative ideation process. Using a mixed-methods research framework, IdeAI proposes a structured protocol to measure how AI tools—specifically large language models and image generation systems—expand, constrain, or redirect creative divergence in industrial design workflows.",
@@ -793,7 +793,18 @@ const PageProjects = () => {
         "Evidence that structured AI use increases conceptual breadth by 34% versus unassisted ideation",
         "A framework adopted in the INBAL educators' 30-hour AI curriculum",
       ],
-      tag: "Thesis",
+      tag: "Research",
+      color: "#0B2B7A",
+      theme: "dark",
+      wide: true,
+    },
+    {
+      id: "cauma",
+      category: ["Research", "Design"],
+      title: "Cauma",
+      subtitle: "Research and Development",
+      abstract: "A sensory compression garment exploring the boundary between physical objects and emotional regulation through deep-pressure interaction.",
+      tag: "INDUSTRIAL DESIGN · TANGIBLE",
       color: "#0B2B7A",
       theme: "dark",
       wide: true,
@@ -842,66 +853,79 @@ const PageProjects = () => {
       theme: "dark",
     },
     {
-      id: "echoes",
-      category: "Apps",
-      title: "Echoes",
-      subtitle: "Geolocated Storytelling Platform",
-      abstract: "Leave a voice or text fragment tied to a precise geographic coordinate. Others, when physically present at that location, discover your echo. Stories layered onto space.",
-      wireframeSteps: ["Map View → Nearby Echoes", "Tap coordinate → Reveal fragment", "Record → Place echo", "Profile → Echo history"],
-      tag: "App",
-      color: "#0B2B7A",
-      theme: "dark",
-    },
-    {
       id: "munchen",
-      category: "Apps",
+      category: "App",
       title: "München Mate",
-      subtitle: "Local Discovery App",
-      abstract: "A curated Munich discovery app for international students. Surfaces hyper-local recommendations with cultural context — the 'why this matters here' layer missing from mainstream apps.",
+      subtitle: "APP",
+      abstract: "A context-aware companion designed to navigate the physical and cultural layers of a city through intelligent, localized interaction.",
       wireframeSteps: ["Onboarding → Language + interests", "District map", "Category filters", "Deep card view"],
-      tag: "App",
+      tag: "PRODUCT · TRAVEL",
       color: "#0B2B7A",
       theme: "dark",
     },
     {
-      id: "wardrobe",
-      category: "Apps",
+      id: "wardrobe-os",
+      category: "App",
       title: "Wardrobe OS",
-      subtitle: "Intelligent Clothing Inventory",
-      abstract: "A meticulous JSON-structured clothing database with intelligent outfit generation. Every item encoded across 14 attributes.",
-      jsonSample: `{
-  "item_id": "polo_001",
-  "type": "polo",
-  "brand": "H&M",
-  "texture": "waffle",
-  "color": {
-    "primary": "navy",
-    "hex": "#1B2A4A",
-    "strict": true
-  },
-  "formality": 2,
-  "season": ["spring","fall"],
-  "worn_count": 14,
-  "last_worn": "2024-03-01",
-  "pair_with": ["chino_003","trouser_002"]
-}`,
-      tag: "App",
+      subtitle: "Coming Soon",
+      abstract: "Project description coming soon.",
+      tag: "APP · LIFESTYLE",
+      color: "#0B2B7A",
+      theme: "dark",
+    },
+    {
+      id: "academic-paper-navigator",
+      category: "AI Models",
+      title: "Academic Paper Navigator",
+      subtitle: "Coming Soon",
+      abstract: "Project description coming soon.",
+      tag: "RESEARCH · TOOL",
+      color: "#0B2B7A",
+      theme: "dark",
+    },
+    {
+      id: "drawer",
+      category: "Design",
+      title: "Drawer",
+      subtitle: "Coming Soon",
+      abstract: "Project description coming soon.",
+      tag: "INDUSTRIAL DESIGN",
+      color: "#0B2B7A",
+      theme: "dark",
+    },
+    {
+      id: "showcase",
+      category: "Design",
+      title: "Showcase",
+      subtitle: "Coming Soon",
+      abstract: "Project description coming soon.",
+      tag: "DESIGN · EXHIBITION",
       color: "#0B2B7A",
       theme: "dark",
       wide: true,
     },
+    {
+      id: "sound-chamber",
+      category: "Design",
+      title: "Sound Chamber",
+      subtitle: "Coming Soon",
+      abstract: "Project description coming soon.",
+      tag: "INDUSTRIAL DESIGN · AUDIO",
+      color: "#0B2B7A",
+      theme: "dark",
+    },
   ];
 
-  const visible = filter === "All" ? projects : projects.filter(p => p.category === filter);
+  const visible = filter === "All" ? projects : projects.filter(p => Array.isArray(p.category) ? p.category.includes(filter) : p.category === filter);
 
-  if (openProject) {
-    const p = projects.find(x => x.id === openProject);
-    if (!p) return null;
+  const p = openProject ? projects.find(x => x.id === openProject) : null;
+
+  if (p) {
     return (
       <div className="page-enter" style={{ paddingTop: 120 }}>
         <div className="reading-col" style={{ padding: "60px 24px 120px" }}>
           <button
-            onClick={() => setOpenProject(null)}
+            onClick={() => window.location.hash = 'projects'}
             data-hover="true"
             style={{
               background: "none",
@@ -1021,25 +1045,6 @@ const PageProjects = () => {
             </>
           )}
 
-          {p.jsonSample && (
-            <>
-              <h4 style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: T.accent, marginBottom: 16 }}>Data Structure — Item Schema</h4>
-              <pre style={{
-                background: "#1E1E1E",
-                color: "#C8D2D9",
-                padding: 28,
-                borderRadius: 4,
-                fontSize: 12,
-                lineHeight: 1.7,
-                overflow: "auto",
-                fontFamily: "'SF Mono', 'Fira Code', monospace",
-                marginBottom: 40,
-              }}>
-                {p.jsonSample}
-              </pre>
-            </>
-          )}
-
           {p.tag === "Thesis" && (
             <button
               data-hover="true"
@@ -1100,6 +1105,7 @@ const PageProjects = () => {
           <div className="grid-auto" style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gridAutoFlow: "dense",
             gap: 16,
           }}>
             {visible.map(p => (
@@ -1107,7 +1113,7 @@ const PageProjects = () => {
                 key={p.id}
                 className="proj-card grid-card"
                 data-hover="true"
-                onClick={() => setOpenProject(p.id)}
+                onClick={() => window.location.hash = `projects/${p.id}`}
                 style={{
                   background: p.color,
                   borderRadius: 4,
@@ -1165,18 +1171,27 @@ const PageProjects = () => {
 // ── Page: Background ───────────────────────────────────────────
 const PageBackground = () => {
   const objects = [
-    { category: "Industrial Design", title: "Tactile Interface Study", sub: "Bachelor's Thesis Object", desc: "Ergonomic grip study translated into a handheld device prototype. 14 iterations across 3 materials.", tag: "Physical · 2022" },
-    { category: "Industrial Design", title: "Modular Light Form", sub: "Designed Object", desc: "Parametrically derived lamp structure. Each joint toleranced for tool-free assembly.", tag: "Product · 2021" },
-    { category: "Industrial Design", title: "Seating System", sub: "Bachelor's Thesis", desc: "A stackable chair designed around occupancy efficiency and tactile surface quality.", tag: "Furniture · 2022" },
-    { category: "AI & Design", title: "Parametric Handle", sub: "CAD/CAM Study", desc: "Algorithmic generation of ergonomic handle geometries. Grasshopper + Rhino pipeline.", tag: "CAD · 2021" },
-    { category: "Qualifications", title: "Enclosure System", sub: "CAD/CAM Study", desc: "Technical drawing suite for a modular enclosure. Full dimensioned orthographic projection.", tag: "Technical Drawing" },
-    { category: "Qualifications", title: "Wayfinding System", sub: "Designed Object", desc: "Signage family for a public institution. Type + form + material specification.", tag: "System · 2023" },
+    { category: "Design", title: "Tactile Interface Study", sub: "Bachelor's Thesis Object", desc: "Ergonomic grip study translated into a handheld device prototype. 14 iterations across 3 materials.", tag: "Physical · 2022" },
+    { category: "Design", title: "Modular Light Form", sub: "Designed Object", desc: "Parametrically derived lamp structure. Each joint toleranced for tool-free assembly.", tag: "Product · 2021" },
+    { category: "Design", title: "Seating System", sub: "Bachelor's Thesis", desc: "A stackable chair designed around occupancy efficiency and tactile surface quality.", tag: "Furniture · 2022" },
+    { category: "Design", title: "Parametric Handle", sub: "CAD/CAM Study", desc: "Algorithmic generation of ergonomic handle geometries. Grasshopper + Rhino pipeline.", tag: "CAD · 2021" },
+    { category: "Design", title: "Wayfinding System", sub: "Designed Object", desc: "Signage family for a public institution. Type + form + material specification.", tag: "System · 2023" },
+    { category: "AI", title: "Generative Form Exploration", sub: "AI Assisted CAD", desc: "Using diffusion models to rapidly iterate on complex surface topologies before manual CAD modeling.", tag: "Research · 2023" },
+    { category: "AI", title: "Material Stress Predictor", sub: "ML Model", desc: "Trained a lightweight neural network to predict failure points in 3D printed geometries.", tag: "Engineering · 2024" },
+    { category: "AI", title: "Automated Ergonomic Testing", sub: "Simulation", desc: "Computer vision pipeline to analyze human posture and interaction with physical prototypes.", tag: "Computer Vision · 2023" },
+    { category: "AI", title: "Prompt Engineering for ID", sub: "Methodology", desc: "Developed a structured prompting framework specifically for industrial design ideation.", tag: "Framework · 2024" },
+    { category: "AI", title: "Semantic Space Mapping", sub: "Data Visualization", desc: "Clustering and visualizing thousands of design concepts using text embeddings.", tag: "Data · 2023" },
+    { category: "Qualifications", title: "Master of Science", sub: "Vanderbilt University", desc: "Master's degree focusing on the intersection of generative artificial intelligence and design.", tag: "Education · 2024" },
+    { category: "Qualifications", title: "Bachelor of Industrial Design", sub: "University", desc: "Comprehensive study of physical product design, manufacturing, and ergonomics.", tag: "Education · 2022" },
+    { category: "Qualifications", title: "Advanced CAD Certification", sub: "Professional", desc: "Certified in advanced surface modeling and parametric design methodologies.", tag: "Certification · 2021" },
+    { category: "Qualifications", title: "Machine Learning Specialization", sub: "Professional", desc: "Deep learning, neural networks, and practical ML deployment methodologies.", tag: "Certification · 2023" },
+    { category: "Qualifications", title: "Enclosure System", sub: "Technical Drawing Suite", desc: "Technical drawing suite for a modular enclosure. Full dimensioned orthographic projection.", tag: "Technical Drawing" },
   ];
 
   const [filter, setFilter] = useState("All");
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
-  const filters = ["All", "AI & Design", "Industrial Design", "Qualifications"];
+  const filters = ["All", "Design", "AI", "Qualifications"];
   const visibleObjects = filter === "All" ? objects : objects.filter(o => o.category === filter);
 
   return (
@@ -1398,24 +1413,42 @@ const PageGallery = () => {
 // ── Root App ───────────────────────────────────────────────────
 export default function App() {
   const [page, setPage] = useState("hero");
+  const [subPage, setSubPage] = useState<string | null>(null);
   const [showNav, setShowNav] = useState(false);
-  const prevPage = useRef(page);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) {
+        setPage("hero");
+        setSubPage(null);
+        setShowNav(false);
+        return;
+      }
+      
+      const parts = hash.split('/');
+      const mainPage = parts[0];
+      const sub = parts[1] || null;
+      
+      setPage(mainPage);
+      setSubPage(sub);
+      setShowNav(mainPage !== 'hero');
+      window.scrollTo({ top: 0 });
+    };
+
+    // Initialize from hash on mount
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const handleComplete = useCallback(() => {
-    setPage("me");
-    setShowNav(true);
+    window.location.hash = 'me';
   }, []);
 
   const navigateTo = (p: string) => {
-    if (p === "hero") {
-      setPage("hero");
-      setShowNav(false);
-      window.scrollTo({ top: 0 });
-    } else {
-      setPage(p);
-      setShowNav(true);
-      window.scrollTo({ top: 0 });
-    }
+    window.location.hash = p;
   };
 
   return (
@@ -1431,7 +1464,7 @@ export default function App() {
         )}
 
         {page === "me" && <PageMe />}
-        {page === "projects" && <PageProjects />}
+        {page === "projects" && <PageProjects openProject={subPage} />}
         {page === "background" && <PageBackground />}
         {page === "gallery" && <PageGallery />}
 
