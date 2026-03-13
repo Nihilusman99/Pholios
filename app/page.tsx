@@ -80,6 +80,8 @@ const FontLoader = () => (
     .masonry > * {
       break-inside: avoid;
       margin-bottom: 20px;
+      display: inline-block;
+      width: 100%;
     }
 
     /* Reading mode */
@@ -1305,27 +1307,61 @@ const fragments = [
 ];
 
 const galleryItems = [
-  { type: "photo", label: "Munich, Winter", color: "#FFFFFF", h: 280 },
+  { id: "G01", type: "photo", label: "IdeAI", img: "/G01.jpg", h: 320 },
   { type: "fragment", text: fragments[0] },
-  { type: "photo", label: "Material Study", color: "#FFFFFF", h: 220 },
-  { type: "photo", label: "Urban Geometry", color: "#FFFFFF", h: 360 },
-  { type: "graphic", label: "Type Experiment 01", color: "#FFFFFF", h: 200 },
+  { id: "G02", type: "photo", label: "Cauma", img: "/G02.jpg", h: 240 },
+  { id: "G03", type: "photo", label: "MIA", img: "/G03.jpg", h: 360 },
+  { id: "G04", type: "graphic", label: "PEP", img: "/G04.jpg", h: 280 },
   { type: "fragment", text: fragments[1] },
-  { type: "photo", label: "Object Still Life", color: "#FFFFFF", h: 300 },
-  { type: "graphic", label: "Poster — INBAL", color: "#FFFFFF", h: 260 },
-  { type: "photo", label: "Vanderbilt Campus", color: "#FFFFFF", h: 240 },
+  { id: "G05", type: "photo", label: "München Mate", img: "/G05.jpg", h: 300 },
+  { id: "G06", type: "graphic", label: "Wardrobe OS", img: "/G06.jpg", h: 260 },
+  { id: "G07", type: "photo", label: "Academic Paper Navigator", img: "/G07.jpg", h: 340 },
   { type: "fragment", text: fragments[2] },
-  { type: "photo", label: "Studio Process", color: "#FFFFFF", h: 320 },
-  { type: "graphic", label: "Visual System Sketch", color: "#FFFFFF", h: 200 },
+  { id: "G08", type: "photo", label: "Drawer", img: "/G08.jpg", h: 280 },
+  { id: "G09", type: "graphic", label: "Showcase", img: "/G09.jpg", h: 320 },
   { type: "fragment", text: fragments[3] },
-  { type: "photo", label: "Light & Shadow Study", color: "#FFFFFF", h: 280 },
+  { id: "G10", type: "photo", label: "Sound chamber", img: "/G10.jpg", h: 240 },
 ];
 
 const PageGallery = () => {
   const [hoveredFrag, setHoveredFrag] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <div className="page-enter" style={{ paddingTop: 120 }}>
+      {selectedImage && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(242, 238, 233, 0.95)",
+            zIndex: 9999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "zoom-out",
+            padding: 40,
+          }}
+          onClick={() => setSelectedImage(null)}
+        >
+          <img
+            src={selectedImage}
+            alt="Full size"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              objectFit: "contain",
+              borderRadius: 4,
+              boxShadow: "0 24px 60px rgba(30,30,30,0.1)",
+              border: "1px solid #0B2B7A",
+            }}
+          />
+        </div>
+      )}
+
       <div className="page-header" style={{ padding: "64px 80px 48px" }}>
         <h2 className="fraunces" style={{
           fontSize: "clamp(32px, 3vw, 44px)",
@@ -1378,10 +1414,12 @@ const PageGallery = () => {
             return (
               <div
                 key={i}
+                id={item.id}
                 className="fragment-item"
                 data-hover="true"
+                onClick={() => item.img && setSelectedImage(item.img)}
                 style={{
-                  background: item.color,
+                  background: item.img ? `url(${item.img}) center/cover no-repeat` : "#E2DCD2",
                   border: "1px solid #0B2B7A",
                   height: item.h,
                   display: "flex",
@@ -1390,18 +1428,7 @@ const PageGallery = () => {
                   padding: "20px 20px",
                   cursor: "none",
                 }}
-              >
-                <div style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}>
-                  <span style={{ fontSize: 11, color: T.accent, letterSpacing: "0.06em" }}>
-                    {item.label}
-                  </span>
-                  <span className="tag">{item.type === "graphic" ? "Graphic" : "Photo"}</span>
-                </div>
-              </div>
+              />
             );
           })}
         </div>
