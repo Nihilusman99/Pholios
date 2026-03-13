@@ -1317,7 +1317,7 @@ const galleryItems = [
   { id: "G06", type: "graphic", label: "06", img: "https://github.com/user-attachments/assets/39a44046-58da-49ca-8bd3-8f463c34b89b", h: 260 },
   { id: "G07", type: "photo", label: "07", img: "https://github.com/user-attachments/assets/d22baee2-2636-464b-9aba-dc19db9b42f2", h: 340 },
   { type: "fragment", text: fragments[2] },
-  { id: "G08", type: "photo", label: "08", img: "https://github.com/user-attachments/assets/be571216-2471-44b2-b3f9-b8cbfe12d8d3", h: 280 },
+  { id: "G08", type: "photo", label: "08", img: "https://github.com/user-attachments/assets/191de4cc-3ce0-44fd-8637-22013b1b2125", h: 280 },
   { id: "G09", type: "graphic", label: "Showcase", img: "/G09.jpg", h: 320 },
   { type: "fragment", text: fragments[3] },
   { id: "G10", type: "photo", label: "Sound chamber", img: "/G10.jpg", h: 240 },
