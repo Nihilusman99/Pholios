@@ -1307,9 +1307,9 @@ const fragments = [
 ];
 
 const galleryItems = [
-  { id: "G01", type: "photo", label: "IdeAI", img: "/G01.jpg", h: 320 },
+  { id: "G01", type: "photo", label: "01", img: "https://github.com/user-attachments/assets/f65653b8-6d83-4267-9ed7-f21dc101d88a", h: 320 },
   { type: "fragment", text: fragments[0] },
-  { id: "G02", type: "photo", label: "Cauma", img: "/G02.jpg", h: 240 },
+  { id: "G02", type: "photo", label: "02", img: "https://github.com/user-attachments/assets/9199ece6-9cda-475c-ad8c-2ae793d8b2f8", h: 240 },
   { id: "G03", type: "photo", label: "MIA", img: "/G03.jpg", h: 360 },
   { id: "G04", type: "graphic", label: "PEP", img: "/G04.jpg", h: 280 },
   { type: "fragment", text: fragments[1] },
