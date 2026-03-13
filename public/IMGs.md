@@ -6,5 +6,4 @@ This folder is for public assets like images.
 ![G05](https://github.com/user-attachments/assets/4a8ed4ef-dbdd-4b7c-8d16-8e039a86bdb6)
 ![G06](https://github.com/user-attachments/assets/39a44046-58da-49ca-8bd3-8f463c34b89b)
 ![G07](https://github.com/user-attachments/assets/d22baee2-2636-464b-9aba-dc19db9b42f2)
-![G08](https://github.com/user-attachments/assets/be571216-2471-44b2-b3f9-b8cbfe12d8d3)
-
+![G08](https://github.com/user-attachments/assets/191de4cc-3ce0-44fd-8637-22013b1b2125)
