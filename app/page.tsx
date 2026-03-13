@@ -1309,7 +1309,7 @@ const fragments = [
 const galleryItems = [
   { id: "G01", type: "photo", label: "01", img: "https://github.com/user-attachments/assets/f65653b8-6d83-4267-9ed7-f21dc101d88a", h: 320 },
   { type: "fragment", text: fragments[0] },
-  { id: "G02", type: "photo", label: "02", img: "https://github.com/user-attachments/assets/6ce8c55c-c3fa-4f5d-8d6b-b46effe1ff63", h: 240 },
+  { id: "G02", type: "photo", label: "02", img: "X", h: 240 },
   { id: "G03", type: "photo", label: "03", img: "https://github.com/user-attachments/assets/6c2ddc80-b1bf-4255-a12d-c8fc923c8f40", h: 360 },
   { id: "G04", type: "graphic", label: "04", img: "https://github.com/user-attachments/assets/fa57973a-dbd0-42e0-bc6b-f09419494165", h: 280 },
   { type: "fragment", text: fragments[1] },
@@ -1317,7 +1317,7 @@ const galleryItems = [
   { id: "G06", type: "graphic", label: "06", img: "https://github.com/user-attachments/assets/39a44046-58da-49ca-8bd3-8f463c34b89b", h: 260 },
   { id: "G07", type: "photo", label: "07", img: "https://github.com/user-attachments/assets/d22baee2-2636-464b-9aba-dc19db9b42f2", h: 340 },
   { type: "fragment", text: fragments[2] },
-  { id: "G08", type: "photo", label: "08", img: "https://github.com/user-attachments/assets/191de4cc-3ce0-44fd-8637-22013b1b2125", h: 280 },
+  { id: "G08", type: "photo", label: "08", img: "https://github.com/user-attachments/assets/6ce8c55c-c3fa-4f5d-8d6b-b46effe1ff63", h: 280 },
   { id: "G09", type: "graphic", label: "Showcase", img: "/G09.jpg", h: 320 },
   { type: "fragment", text: fragments[3] },
   { id: "G10", type: "photo", label: "Sound chamber", img: "/G10.jpg", h: 240 },
