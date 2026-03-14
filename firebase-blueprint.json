@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "GalleryItem": {
+      "title": "Gallery Item",
+      "description": "A photo or text fragment in the gallery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["photo", "fragment"] },
+        "label": { "type": "string" },
+        "img": { "type": "string", "description": "URL of the image" },
+        "text": { "type": "string", "description": "Text for fragments" },
+        "h": { "type": "number", "description": "Height for masonry layout" },
+        "order": { "type": "number", "description": "Display order" }
+      },
+      "required": ["type", "order"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "A portfolio project",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "abstract": { "type": "string" },
+        "tag": { "type": "string" },
+        "img": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["id", "title", "order"]
+    }
+  },
+  "firestore": {
+    "/gallery": {
+      "schema": "GalleryItem",
+      "description": "Collection of gallery items"
+    },
+    "/projects": {
+      "schema": "Project",
+      "description": "Collection of portfolio projects"
+    }
+  }
+}
