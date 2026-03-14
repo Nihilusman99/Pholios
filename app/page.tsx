@@ -1307,61 +1307,27 @@ const fragments = [
 ];
 
 const galleryItems = [
-  { id: "G01", type: "photo", label: "01", img: "https://github.com/user-attachments/assets/f65653b8-6d83-4267-9ed7-f21dc101d88a", h: 320 },
+  { id: "G01", type: "photo", label: "01", img: "", h: 320 },
   { type: "fragment", text: fragments[0] },
-  { id: "G02", type: "photo", label: "02", img: "X", h: 240 },
-  { id: "G03", type: "photo", label: "03", img: "https://github.com/user-attachments/assets/6c2ddc80-b1bf-4255-a12d-c8fc923c8f40", h: 360 },
-  { id: "G04", type: "graphic", label: "04", img: "https://github.com/user-attachments/assets/fa57973a-dbd0-42e0-bc6b-f09419494165", h: 280 },
+  { id: "G02", type: "photo", label: "02", img: "", h: 240 },
+  { id: "G03", type: "photo", label: "03", img: "", h: 360 },
+  { id: "G04", type: "graphic", label: "04", img: "", h: 280 },
   { type: "fragment", text: fragments[1] },
-  { id: "G05", type: "photo", label: "05", img: "https://github.com/user-attachments/assets/4a8ed4ef-dbdd-4b7c-8d16-8e039a86bdb6", h: 300 },
-  { id: "G06", type: "graphic", label: "06", img: "https://github.com/user-attachments/assets/39a44046-58da-49ca-8bd3-8f463c34b89b", h: 260 },
-  { id: "G07", type: "photo", label: "07", img: "https://github.com/user-attachments/assets/d22baee2-2636-464b-9aba-dc19db9b42f2", h: 340 },
+  { id: "G05", type: "photo", label: "05", img: "", h: 300 },
+  { id: "G06", type: "graphic", label: "06", img: "", h: 260 },
+  { id: "G07", type: "photo", label: "07", img: "", h: 340 },
   { type: "fragment", text: fragments[2] },
-  { id: "G08", type: "photo", label: "08", img: "https://github.com/user-attachments/assets/6ce8c55c-c3fa-4f5d-8d6b-b46effe1ff63", h: 280 },
-  { id: "G09", type: "graphic", label: "Showcase", img: "/G09.jpg", h: 320 },
+  { id: "G08", type: "photo", label: "08", img: "", h: 280 },
+  { id: "G09", type: "graphic", label: "09", img: "", h: 320 },
   { type: "fragment", text: fragments[3] },
-  { id: "G10", type: "photo", label: "Sound chamber", img: "/G10.jpg", h: 240 },
+  { id: "G10", type: "photo", label: "10", img: "", h: 240 },
 ];
 
 const PageGallery = () => {
   const [hoveredFrag, setHoveredFrag] = useState<number | null>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <div className="page-enter" style={{ paddingTop: 120 }}>
-      {selectedImage && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(242, 238, 233, 0.95)",
-            zIndex: 9999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "zoom-out",
-            padding: 40,
-          }}
-          onClick={() => setSelectedImage(null)}
-        >
-          <img
-            src={selectedImage}
-            alt="Full size"
-            style={{
-              maxWidth: "100%",
-              maxHeight: "100%",
-              objectFit: "contain",
-              borderRadius: 4,
-              boxShadow: "0 24px 60px rgba(30,30,30,0.1)",
-              border: "1px solid #0B2B7A",
-            }}
-          />
-        </div>
-      )}
-
       <div className="page-header" style={{ padding: "64px 80px 48px" }}>
         <h2 className="fraunces" style={{
           fontSize: "clamp(32px, 3vw, 44px)",
@@ -1417,7 +1383,6 @@ const PageGallery = () => {
                 id={item.id}
                 className="fragment-item"
                 data-hover="true"
-                onClick={() => item.img && setSelectedImage(item.img)}
                 style={{
                   background: item.img ? `url(${item.img}) center/cover no-repeat` : "#E2DCD2",
                   border: "1px solid #0B2B7A",
