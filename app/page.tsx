@@ -1307,24 +1307,33 @@ const fragments = [
 ];
 
 const galleryItems = [
-  { type: "photo", label: "IdeAI", img: "https://picsum.photos/seed/ideai/800/1000", h: 320 },
+  { type: "photo", label: "IdeAI", img: "/gallery/ideai.jpg", fallback: "https://picsum.photos/seed/ideai/800/1000", h: 320 },
   { type: "fragment", text: fragments[0] },
-  { type: "photo", label: "Cauma", img: "https://picsum.photos/seed/cauma/800/600", h: 240 },
-  { type: "photo", label: "MIA", img: "https://picsum.photos/seed/mia/800/1200", h: 360 },
-  { type: "graphic", label: "PEP", img: "https://picsum.photos/seed/pep/800/800", h: 280 },
+  { type: "photo", label: "Cauma", img: "/gallery/cauma.jpg", fallback: "https://picsum.photos/seed/cauma/800/600", h: 240 },
+  { type: "photo", label: "MIA", img: "/gallery/mia.jpg", fallback: "https://picsum.photos/seed/mia/800/1200", h: 360 },
+  { type: "graphic", label: "PEP", img: "/gallery/pep.jpg", fallback: "https://picsum.photos/seed/pep/800/800", h: 280 },
   { type: "fragment", text: fragments[1] },
-  { type: "photo", label: "München Mate", img: "https://picsum.photos/seed/munchen/800/1000", h: 300 },
-  { type: "graphic", label: "Wardrobe OS", img: "https://picsum.photos/seed/wardrobe/800/600", h: 260 },
-  { type: "photo", label: "Academic Paper Navigator", img: "https://picsum.photos/seed/academic/800/1200", h: 340 },
+  { type: "photo", label: "München Mate", img: "/gallery/munchen.jpg", fallback: "https://picsum.photos/seed/munchen/800/1000", h: 300 },
+  { type: "graphic", label: "Wardrobe OS", img: "/gallery/wardrobe.jpg", fallback: "https://picsum.photos/seed/wardrobe/800/600", h: 260 },
+  { type: "photo", label: "Academic Paper Navigator", img: "/gallery/academic.jpg", fallback: "https://picsum.photos/seed/academic/800/1200", h: 340 },
   { type: "fragment", text: fragments[2] },
-  { type: "photo", label: "Drawer", img: "https://picsum.photos/seed/drawer/800/800", h: 280 },
-  { type: "graphic", label: "Showcase", img: "https://picsum.photos/seed/showcase/800/1000", h: 320 },
+  { type: "photo", label: "Drawer", img: "/gallery/drawer.jpg", fallback: "https://picsum.photos/seed/drawer/800/800", h: 280 },
+  { type: "graphic", label: "Showcase", img: "/gallery/showcase.jpg", fallback: "https://picsum.photos/seed/showcase/800/1000", h: 320 },
   { type: "fragment", text: fragments[3] },
-  { type: "photo", label: "Sound chamber", img: "https://picsum.photos/seed/soundchamber/800/600", h: 240 },
+  { type: "photo", label: "Sound chamber", img: "/gallery/soundchamber.jpg", fallback: "https://picsum.photos/seed/soundchamber/800/600", h: 240 },
 ];
 
 const PageGallery = () => {
   const [hoveredFrag, setHoveredFrag] = useState<number | null>(null);
+
+  // Helper to handle image loading from public folder with fallback
+  const getImgSrc = (item: any) => {
+    // In a real scenario, we'd check if the file exists. 
+    // For now, we use the fallback if the user hasn't uploaded to /public/gallery/ yet.
+    return item.fallback; 
+    // To use local images, the user should upload them to /public/gallery/ 
+    // and then this could be changed to return item.img
+  };
 
   return (
     <div className="page-enter" style={{ paddingTop: 120 }}>
@@ -1377,37 +1386,18 @@ const PageGallery = () => {
               );
             }
 
+            const imgSrc = getImgSrc(item);
             return (
               <div
                 key={i}
                 className="fragment-item"
                 data-hover="true"
                 style={{
-                  background: item.img ? `url(${item.img}) center/cover no-repeat` : "#E2DCD2",
-                  border: "1px solid #0B2B7A",
+                  background: imgSrc ? `url(${imgSrc}) center/cover no-repeat` : "#E2DCD2",
                   height: item.h,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-end",
-                  padding: "20px 20px",
                   cursor: "none",
                 }}
-              >
-                <div style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  background: "rgba(242, 238, 233, 0.9)",
-                  padding: "6px 12px",
-                  borderRadius: 4,
-                  border: "1px solid #0B2B7A",
-                }}>
-                  <span style={{ fontSize: 11, color: T.text, letterSpacing: "0.06em", fontWeight: 500 }}>
-                    {item.label}
-                  </span>
-                  <span className="tag" style={{ color: T.text, borderColor: T.text }}>{item.type === "graphic" ? "Graphic" : "Photo"}</span>
-                </div>
-              </div>
+              />
             );
           })}
         </div>
